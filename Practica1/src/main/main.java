@@ -8,35 +8,26 @@ import juego.resolvedor;
 
 public class main {
 	public static Scanner read = new Scanner(System.in);
-
+	
+	
 	public static void main(String[] args) {
 		
-		resolvedor.matricesDificl(1);
-		
-		/*while (1 < 2) {
-			int opcion = 0;
-			opcion = Integer.parseInt(read.nextLine());
-			gestionInterna.penalizacion();
-		}*/
-		
-		/*while (1<2) {
-			int opcion = 0;
-			opcion = Integer.parseInt(read.nextLine());
-			gestionInterna.penalizacion();
-		}*/
-		//menu();
-		
-		//resolvedor.trigonometria(3);
-		
+		/*
+		 * while (1 < 2) { int opcion = 0; opcion = Integer.parseInt(read.nextLine());
+		 * gestionInterna.penalizacion(); }
+		 */
+
+		 menu();
+		// resolvedor.trigonometria(3);
 		//juego.juego();
-		
+
 	}
 
 	// Muestra menu
 	public static void menu() {
 		int opcion = 0;
 		boolean check = true;
-
+		
 		do {
 			try {
 				System.out.println("\nBinvenido: Menu\n[1]Iniciar Juego\n[2]Retomar Juego\n[3]Generar reporte\n[4]Salir");
@@ -45,16 +36,25 @@ public class main {
 				switch (opcion) {
 				// Iniciar Juego
 				case 1:
-					System.out.println("uno");
 					juego.juego();
 					break;
 				// Retomar juego
 				case 2:
-					System.out.println("dos");
+					juego.tablero();
 					break;
 				// Generar Reportes
 				case 3:
-					System.out.println("tres");
+					if(juego.posicion<64) {
+						System.out.println("Debes terminar la partida en curso");
+					}else {
+						if (juego.Revision == true) {
+							System.out.println("Reportes Creados");
+							juego.Revision = false;
+						}else{
+							System.out.println("Ya han sido creados");
+						}
+					}
+					
 					break;
 				// Salir
 				case 4:
@@ -65,7 +65,7 @@ public class main {
 					System.out.println("opcion incorrecta");
 				}
 			} catch (Exception e) {
-				System.out.println("Error " + e);
+				System.out.println("Error de ingreso");
 			}
 		} while (check == true);
 	}

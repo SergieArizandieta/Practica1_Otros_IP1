@@ -3,28 +3,41 @@ package juego;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class juego {
-	public static Scanner read = new Scanner(System.in);
-	static String[][] tablero = new String[8][8];
-	public static ThreadLocalRandom tlr = ThreadLocalRandom.current();
+import main.main;
 
-	static int posicion = 0;
-	// filas vs columnas
+public class juego {
+	public static boolean Revision =true;
+	public static ThreadLocalRandom tlr = ThreadLocalRandom.current();
+	public static Scanner read = new Scanner(System.in);
+
+	static boolean Ganador = false;
+	static String[][] tablero = new String[8][8];
+	public static int posicion = 0;
 
 	public static void juego() {
 		System.out.println("Bienvenido a Escaleras Matemáticas");
 		gestionInterna.inicializandoGeneral();
 		gestionInterna.inicializandoPenalizaciones();
-		
-		
+		//Looktablero();
+
 		tablero();
-	
+
 	}
 
 	public static void tablero() {
-		//Looktablero();
+		if(Ganador == true) {
+			
+			System.out.println("Haz Ganado!!\n");
+			
+		}else {
 		mostrar_tablero();
-		menu();
+		if(posicion >=  64) {
+			Ganador = true;
+			tablero();
+		}else {
+			menu();
+		}
+		}
 	}
 
 	public static void Looktablero() {
@@ -49,14 +62,17 @@ public class juego {
 				switch (opcion) {
 				// Iniciar Juego
 				case "x":
+					System.out.println("adsasdas");
 					tirar_dados();
 					check = false;
 					tablero();
 					break;
 				// Retomar juego
 				case "p":
-
+				
+					System.out.println("aaaa");
 					check = false;
+					main.menu();
 					break;
 				default:
 					System.out.println("opcion incorrecta");
@@ -93,10 +109,10 @@ public class juego {
 		int dado = tlr.nextInt(2, 6 + 1);
 		System.out.println("Se tiro el dado!! y salio...: " + dado);
 		posicion += dado;
+		if (posicion>=64) {
+			posicion=64;
+		}
 		gestionInterna.buscar();
 	}
-
-	
-	
 
 }

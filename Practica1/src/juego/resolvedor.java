@@ -4,7 +4,7 @@ public class resolvedor {
 	static boolean Facil1 = true, Facil2 = true, Facil3 = true;
 	static boolean Medio1 = true, Medio2 = true, Medio3 = true;
 	static boolean Dificil1 = true, Dificil2 = true, Dificil3 = true;
-	
+
 	public static void trigonometria(int opcion) {
 
 		double A = 0, B = 0, C = 0;
@@ -68,21 +68,23 @@ public class resolvedor {
 	}
 
 	public static void matricesMedio(int opcion) {
-		
+
 		switch (opcion) {
 
 		case 1:
 			if (Medio1 == false) {
 				gestionInterna.penalizacion();
 			} else {
-				int MatrizA[][] = {{7,48,5,0,1},{57,8,4,6,14},{0,5,6,78,15},{21,14,8,19,54},{32,20,26,47,12}};
-				int MatrizB[][] = {{9,5,2,1,8},{4,2,3,47,8},{48,55,32,19,6},{7,56,32,14,8},{32,87,0,1,7}};
-				
+				int MatrizA[][] = { { 7, 48, 5, 0, 1 }, { 57, 8, 4, 6, 14 }, { 0, 5, 6, 78, 15 }, { 21, 14, 8, 19, 54 },
+						{ 32, 20, 26, 47, 12 } };
+				int MatrizB[][] = { { 9, 5, 2, 1, 8 }, { 4, 2, 3, 47, 8 }, { 48, 55, 32, 19, 6 }, { 7, 56, 32, 14, 8 },
+						{ 32, 87, 0, 1, 7 } };
+
 				System.out.println("uno - M");
 				gestionInterna.ContadorMedio += 1;
 				Medio1 = false;
-	
-				sumarMatrices(MatrizA,MatrizB);
+
+				sumarMatrices(MatrizA, MatrizB);
 			}
 
 			break;
@@ -91,14 +93,16 @@ public class resolvedor {
 			if (Medio2 == false) {
 				gestionInterna.penalizacion();
 			} else {
-				int MatrizA[][] = {{4,9,7,45,18},{7,51,26,8,38},{48,26,37,21,19},{1,0,6,8,1},{2,19,55,25,15}};
-				int MatrizB[][] = {{0,2,15,1,66},{21,48,62,7,33},{4,88,0,68,4},{25,18,24,7,55},{24,15,36,5,98}};
-				
+				int MatrizA[][] = { { 4, 9, 7, 45, 18 }, { 7, 51, 26, 8, 38 }, { 48, 26, 37, 21, 19 },
+						{ 1, 0, 6, 8, 1 }, { 2, 19, 55, 25, 15 } };
+				int MatrizB[][] = { { 0, 2, 15, 1, 66 }, { 21, 48, 62, 7, 33 }, { 4, 88, 0, 68, 4 },
+						{ 25, 18, 24, 7, 55 }, { 24, 15, 36, 5, 98 } };
+
 				System.out.println("dos - M");
 				gestionInterna.ContadorMedio += 1;
 				Medio2 = false;
-				
-				sumarMatrices(MatrizA,MatrizB);
+
+				sumarMatrices(MatrizA, MatrizB);
 			}
 			break;
 
@@ -106,28 +110,30 @@ public class resolvedor {
 			if (Medio3 == false) {
 				gestionInterna.penalizacion();
 			} else {
-				int MatrizA[][] = {{0,1,15,5,36},{1,78,65,32,4},{48,66,39,0,55},{14,98,63,20,15},{11,39,84,7,1}};
-				int MatrizB[][] = {{78,25,66,48,98},{0,45,2,3,1},{2,9,14,10,20},{35,87,65,2,32},{25,8,4,9,39}};
-				
+				int MatrizA[][] = { { 0, 1, 15, 5, 36 }, { 1, 78, 65, 32, 4 }, { 48, 66, 39, 0, 55 },
+						{ 14, 98, 63, 20, 15 }, { 11, 39, 84, 7, 1 } };
+				int MatrizB[][] = { { 78, 25, 66, 48, 98 }, { 0, 45, 2, 3, 1 }, { 2, 9, 14, 10, 20 },
+						{ 35, 87, 65, 2, 32 }, { 25, 8, 4, 9, 39 } };
+
 				System.out.println("tres - M");
 				gestionInterna.ContadorMedio += 1;
 				Medio3 = false;
-				
-				sumarMatrices(MatrizA,MatrizB);
+
+				sumarMatrices(MatrizA, MatrizB);
 			}
 			break;
 		}
 	}
-	
-	public static void sumarMatrices( int[][]MatrizA ,int[][]MatrizB) {
+
+	public static void sumarMatrices(int[][] MatrizA, int[][] MatrizB) {
 		int[][] matriz_t = new int[5][5];
-        for (int i=0; i<5; i++){
-            for (int j=0; j<5; j++){
-            	matriz_t [i][j]= MatrizA[i][j]+MatrizB[i][j];
-               }
-           }
-        
-        for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++) {
+				matriz_t[i][j] = MatrizA[i][j] + MatrizB[i][j];
+			}
+		}
+
+		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
 				System.out.print("|" + matriz_t[i][j] + "|\t");
 			}
@@ -136,25 +142,21 @@ public class resolvedor {
 	}
 
 	public static void matricesDificl(int opcion) {
-		
+
 		switch (opcion) {
 
 		case 1:
 			if (Dificil1 == false) {
 				gestionInterna.penalizacion();
 			} else {
-				int MatrizA[][] = {{5,10,1,3},{9,14,2,6},{7,8,15,3},{6,8,9,2}};
-				int MatrizB[][] = {{5,13,9,4},{1,9,6,3},{8,11,69,33},{25,6,7,4}};
-				
-	
-				tranpuesta(MatrizB,determinante(MatrizB,4),MatrizA);
-				
-				
+				int MatrizA[][] = { { 5, 10, 1, 3 }, { 9, 14, 2, 6 }, { 7, 8, 15, 3 }, { 6, 8, 9, 2 } };
+				int MatrizB[][] = { { 5, 13, 9, 4 }, { 1, 9, 6, 3 }, { 8, 11, 69, 33 }, { 25, 6, 7, 4 } };
+
+				adjunta(MatrizB, determinante(MatrizB, 4), MatrizA);
 				System.out.println("uno - D");
 				gestionInterna.ContadorDificl += 1;
 				Dificil1 = false;
-	
-				
+
 			}
 
 			break;
@@ -163,9 +165,10 @@ public class resolvedor {
 			if (Dificil2 == false) {
 				gestionInterna.penalizacion();
 			} else {
-				int MatrizA[][] = {{1,12,9,8},{7,6,3,2},{0,5,6,14},{6,9,6,10}};
-				int MatrizB[][] = {{8,19,20,4},{12,33,6,8},{4,5,9,7},{8,22,14,6}};
+				int MatrizA[][] = { { 1, 12, 9, 8 }, { 7, 6, 3, 2 }, { 0, 5, 6, 14 }, { 6, 9, 6, 10 } };
+				int MatrizB[][] = { { 8, 19, 20, 4 }, { 12, 33, 6, 8 }, { 4, 5, 9, 7 }, { 8, 22, 14, 6 } };
 
+				adjunta(MatrizB, determinante(MatrizB, 4), MatrizA);
 				System.out.println("dos - D");
 				gestionInterna.ContadorDificl += 1;
 				Dificil2 = false;
@@ -180,6 +183,7 @@ public class resolvedor {
 				int MatrizA[][] = { { 5, 9, 14, 5 }, { 6, 0, 5, 3 }, { 1, 14, 68, 8 }, { 7, 5, 3, 9 } };
 				int MatrizB[][] = { { 0, 9, 7, 19 }, { 2, 30, 5, 48 }, { 1, 31, 2, 5 }, { 15, 8, 4, 3 } };
 
+				adjunta(MatrizB, determinante(MatrizB, 4), MatrizA);
 				System.out.println("tres - D");
 				gestionInterna.ContadorDificl += 1;
 				Dificil3 = false;
@@ -203,7 +207,6 @@ public class resolvedor {
 				}
 			}
 		}
-
 	}
 
 	public static int determinante(int[][] Matriz, int n) {
@@ -224,29 +227,7 @@ public class resolvedor {
 		return Determinante;
 	}
 
-	public static int[][] tranpuesta(int[][] Matriz,int det,int[][]MatrizA) {
-		int MatrizT[][] = new int[4][4];
-
-		for (int x = 0; x < 4; x++) {
-			for (int y = 0; y < 4; y++) {
-				MatrizT[y][x] = Matriz[x][y];
-			}
-		}
-
-		
-		for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 4; j++) {
-			System.out.print("|" + MatrizT[i][j] + "|\t");
-		}
-		System.out.println("\t");
-	}
-		System.out.println("\t");
-		adjunta(MatrizT,det,MatrizA);
-
-		return MatrizT;
-	}
-
-	public static void adjunta(int[][] Matriz,int det, int[][] matrizA) {
+	public static void adjunta(int[][] Matriz, int det, int[][] matrizA) {
 		int MatrizA[][] = new int[4][4];
 		int Temp[][] = new int[3][3];
 
@@ -254,7 +235,6 @@ public class resolvedor {
 		int fila = 0, columna = 0;
 		for (int k = 0; k < 16; k++) {
 			int a = 0, b = 0;
-		
 
 			for (int i = 0; i < 4; i++) {
 				for (int j = 0; j < 4; j++) {
@@ -267,111 +247,97 @@ public class resolvedor {
 					}
 				}
 			}
-			
-			/*for (int i = 0; i < Temp.length; i++) {
-				for (int j = 0; j < Temp.length; j++) {
-					System.out.print("|" + Temp[i][j] + "|\t");
-				}
-				System.out.println("\t");
-			}
-			System.out.println(determinante(Temp, 3)+" det\t");*/
-				MatrizA[fila][columna] = determinante(Temp, 3);
+
+			/*
+			 * for (int i = 0; i < Temp.length; i++) { for (int j = 0; j < Temp.length; j++)
+			 * { System.out.print("|" + Temp[i][j] + "|\t"); } System.out.println("\t"); }
+			 * System.out.println(determinante(Temp, 3)+" det\t");
+			 */
+			MatrizA[fila][columna] = determinante(Temp, 3);
 
 			y++;
 			if (y == 4) {
 				y = 0;
 				x++;
 			}
-			
+
 			fila++;
 			if (fila == 4) {
 				fila = 0;
-				columna++;	
+				columna++;
 			}
 		}
 
 		System.out.println("\t");
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
-				
-				if((i+1+j+1)%2==0) {
+
+				if ((i + 1 + j + 1) % 2 == 0) {
 					MatrizA[i][j] = MatrizA[i][j];
-				}else {
-					MatrizA[i][j] = -1* MatrizA[i][j];
+				} else {
+					MatrizA[i][j] = -1 * MatrizA[i][j];
 				}
-				
+
 			}
-	
+
 		}
-		
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++) {
-				System.out.print("|" + MatrizA[i][j] + "|\t");
-			}
-			System.out.println("\t");
-		}
-		System.out.println("\t");
-		inversa(MatrizA,det,matrizA);
+
+		/*
+		 * for (int i = 0; i < 4; i++) { for (int j = 0; j < 4; j++) {
+		 * System.out.print("|" + MatrizA[i][j] + "|\t"); } System.out.println("\t"); }
+		 * System.out.println("\t");
+		 */
+
+		inversa(MatrizA, det, matrizA);
 	}
 
-	public static void inversa(int[][]Matriz, int det,int[][]matrizA) {
-	
+	public static void inversa(int[][] Matriz, int det, int[][] matrizA) {
+
 		double MatrizI[][] = new double[4][4];
-			
-		for (int i = 0; i < 4; i++) {	
+
+		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
 				double Dato1 = (double) Matriz[i][j];
-				double Dato2 = (double) det; 
-				double resultado = Dato1/Dato2;
-				System.out.println(Dato1 + "a/a" + Dato2 + " = " + resultado);
+				double Dato2 = (double) det;
+				double resultado = Dato1 / Dato2;
+				// System.out.println(Dato1 + "a/a" + Dato2 + " = " + resultado);
 				MatrizI[i][j] = resultado;
-				
+
 			}
 		}
-		
-		for (int x = 0; x < 4; x++) {
-			for (int y = 0; y < 4; y++) {
-				MatrizI[x][y] = MatrizI[y][x];
+
+		/*
+		 * System.out.println("\t"); for (int i = 0; i < 4; i++) { for (int j = 0; j <
+		 * 4; j++) { System.out.print("|" + MatrizI[i][j] + "|\t"); }
+		 * System.out.println("\t"); } System.out.println("\t");
+		 */
+
+		producto(matrizA, MatrizI);
+	}
+
+	private static double[][] producto(int[][] matriz1, double matrizI[][]) {
+		double suma = 0;
+		double result[][] = new double[matriz1.length][matrizI.length];
+		for (int i = 0; i < matriz1.length; i++) {
+			for (int j = 0; j < matrizI.length; j++) {
+				suma = 0;
+				for (int k = 0; k < matrizI.length; k++) {
+					double Dato1 = (double) matriz1[i][k];
+					suma += Dato1 * matrizI[k][j];
+				}
+				result[i][j] = suma;
 			}
 		}
-		
-		System.out.println("\t");
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++) {
-				System.out.print("|" + MatrizI[i][j] + "|\t");
+
+		for (int i = 0; i < result.length; i++) {
+			for (int j = 0; j < result.length; j++) {
+				System.out.print("|" + result[i][j] + "|\t");
 			}
 			System.out.println("\t");
 		}
-		System.out.println("\t");
-		
-		producto(matrizA, MatrizI);
-	}
-	
-	 private static double[][] producto(int[][] matriz1, double matrizI [][]){  
-	        double suma = 0;  
-	        double result[][] = new double[matriz1.length][matrizI.length];  
-	        for(int i = 0; i < matriz1.length; i++){  
-	            for(int j = 0; j < matrizI.length; j++){  
-	                suma = 0;  
-	                for(int k = 0; k < matrizI.length; k++){  
-	                	double Dato1 = (double) matriz1[i][k];
-	                    suma += Dato1 * matrizI[k][j];  
-	                }  
-	                result[i][j] = suma;  
-	            }  
-	        }  
-	        
-	        
-	        for (int i = 0; i < result.length; i++) {
-				for (int j = 0; j < result.length; j++) {
-					System.out.print("|" + result[i][j] + "|\t");
-				}
-				System.out.println("\t");
-			}
-	        
-	        return result;  
-	     
-	    } 
 
-	 
+		return result;
+
+	}
+
 }

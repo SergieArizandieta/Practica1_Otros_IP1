@@ -1,7 +1,7 @@
 package juego;
 
 public class gestionInterna {
-	
+
 	public static String espaciado(String dato) {
 		String EspaciadosT[] = null;
 		String espaciado = "";
@@ -37,6 +37,23 @@ public class gestionInterna {
 	}
 
 	public static void inicializandoGeneral() {
+
+		juego.Ganador = false;
+		juego.posicion = 0;
+		resolvedor.Facil1 = true;
+		resolvedor.Facil2 = true;
+		resolvedor.Facil3 = true;
+		resolvedor.Medio1 = true;
+		resolvedor.Medio2 = true;
+		resolvedor.Medio3 = true;
+		resolvedor.Dificil1 = true;
+		resolvedor.Dificil2 = true;
+		resolvedor.Dificil3 = true;
+		gestionInterna.ContadorFacil = 0;
+		gestionInterna.ContadorMedio = 0;
+		gestionInterna.ContadorDificl = 0;
+		juego.Revision =true;
+
 		int temporal = 1;
 		juego.tablero[0][0] = "Primero";
 		juego.tablero[7][0] = "Ultimo";
@@ -44,22 +61,22 @@ public class gestionInterna {
 
 		for (int j = 7; j >= 0; j--) {
 			if (alternante % 2 == 0) {
-				for (int i = 0; i < 8; i++) {
-					juego.tablero[j][i] = String.valueOf(temporal);
-					temporal++;
-				}
-				alternante = 3;
-			} else {
 				for (int i = 7; i >= 0; i--) {
 					juego.tablero[j][i] = String.valueOf(temporal);
 					temporal++;
 				}
+				
+				alternante = 3;
+			} else {
+				
+				for (int i = 0; i < 8; i++) {
+					juego.tablero[j][i] = String.valueOf(temporal);
+					temporal++;
+				}
+				
 				alternante = 2;
 			}
 		}
-
-		juego.tablero[7][0] = "1";
-
 	}
 
 	public static void inicializandoPenalizaciones() {
@@ -135,34 +152,31 @@ public class gestionInterna {
 			}
 		}
 	}
-	
-	
+
 	static int ContadorFacil = 0;
 	static int ContadorMedio = 0;
 	static int ContadorDificl = 0;
-	public static void penalizacion() {
-		
-		if (juego.posicion < 17 && ContadorFacil<=1) {
 
+	public static void penalizacion() {
+
+		if (juego.posicion < 17 && ContadorFacil <= 1) {
 			System.out.println("Haz caido en una penalizacion Facil de suerte... ");
 			int noPenalizacion = juego.tlr.nextInt(1, 3 + 1);
 			resolvedor.trigonometria(noPenalizacion);
-			
-		} 
-		
-		if (juego.posicion > 16 && juego.posicion < 41 && ContadorMedio<=1) {
+		}
 
+		if (juego.posicion > 16 && juego.posicion < 41 && ContadorMedio <= 1) {
 			System.out.println("Haz caido en una penalizacion media :) suerte... ");
 			int noPenalizacion = juego.tlr.nextInt(1, 3 + 1);
 			resolvedor.matricesMedio(noPenalizacion);
-		} 
-		
-		if (juego.posicion > 40 && ContadorDificl<=1) {
+		}
+
+		if (juego.posicion > 40 && ContadorDificl <= 1) {
 			System.out.println(ContadorMedio);
 			System.out.println("Haz caido en una penalizacion dificil >:) ... ");
 			int noPenalizacion = juego.tlr.nextInt(1, 3 + 1);
-			resolvedor.matricesMedio(noPenalizacion);
+			resolvedor.matricesDificl(noPenalizacion);
 		}
-		
+
 	}
 }
