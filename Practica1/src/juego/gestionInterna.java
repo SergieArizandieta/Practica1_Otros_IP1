@@ -91,5 +91,51 @@ public class gestionInterna {
 		}
 	}
 
+	public static void Buscar() {
+		boolean validacion = true;
+
+		if (juego.posicion != 0) {
+			for (int k = 0; k < 8; k++) {
+				for (int l = 0; l < 8; l++) {
+					if (validacion == true) {
+						String[] dataEliminar = juego.tablero[k][l].split(",");
+						int cantidadEliminar = dataEliminar.length;
+
+						if (cantidadEliminar == 2) {
+							if (dataEliminar[1].equals("@")) {
+								juego.tablero[k][l] = dataEliminar[0];
+								validacion = false;
+							}
+						}
+
+						if (cantidadEliminar == 3) {
+							if (dataEliminar[2].equals("@")) {
+								juego.tablero[k][l] = dataEliminar[0] + "," + dataEliminar[1];
+								validacion = false;
+							}
+						}
+					}
+
+				}
+			}
+		}
+
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+
+				String[] data = juego.tablero[i][j].split(",");
+				int cantidad = data.length;
+
+				if (data[0].equals(Integer.toString(juego.posicion))) {
+					if (cantidad == 2) {
+						juego.tablero[i][j] = data[0] + "," + data[1] + "," + "@";
+					}
+					if (cantidad == 1) {
+						juego.tablero[i][j] = data[0] + "," + "@";
+					}
+				}
+			}
+		}
+	}
 	
 }
