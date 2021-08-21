@@ -10,7 +10,14 @@ public class main {
 	public static Scanner read = new Scanner(System.in);
 
 	public static void main(String[] args) {
-
+		
+		resolvedor.matricesDificl(1);
+		
+		/*while (1 < 2) {
+			int opcion = 0;
+			opcion = Integer.parseInt(read.nextLine());
+			gestionInterna.penalizacion();
+		}*/
 		
 		/*while (1<2) {
 			int opcion = 0;
@@ -18,8 +25,11 @@ public class main {
 			gestionInterna.penalizacion();
 		}*/
 		//menu();
-		juego.juego();
+		
 		//resolvedor.trigonometria(3);
+		
+		//juego.juego();
+		
 	}
 
 	// Muestra menu
