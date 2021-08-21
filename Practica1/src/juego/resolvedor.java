@@ -314,7 +314,7 @@ public class resolvedor {
 		inversa(MatrizA,det,matrizA);
 	}
 
-	public static void inversa(int[][]Matriz, int det,int[][]MatrizA) {
+	public static void inversa(int[][]Matriz, int det,int[][]matrizA) {
 	
 		double MatrizI[][] = new double[4][4];
 			
@@ -329,6 +329,12 @@ public class resolvedor {
 			}
 		}
 		
+		for (int x = 0; x < 4; x++) {
+			for (int y = 0; y < 4; y++) {
+				MatrizI[x][y] = MatrizI[y][x];
+			}
+		}
+		
 		System.out.println("\t");
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
@@ -336,26 +342,28 @@ public class resolvedor {
 			}
 			System.out.println("\t");
 		}
+		System.out.println("\t");
 		
-		producto(MatrizA,MatrizI);
+		producto(matrizA, MatrizI);
 	}
 	
-	 private static int[][] producto(int matriz1[][], double[][] matrizI){  
-	        int suma = 0;  
-	        int result[][] = new int[matriz1.length][matrizI.length];  
+	 private static double[][] producto(int[][] matriz1, double matrizI [][]){  
+	        double suma = 0;  
+	        double result[][] = new double[matriz1.length][matrizI.length];  
 	        for(int i = 0; i < matriz1.length; i++){  
 	            for(int j = 0; j < matrizI.length; j++){  
 	                suma = 0;  
 	                for(int k = 0; k < matrizI.length; k++){  
-	                    suma += matriz1[i][k] * matrizI[k][j];  
+	                	double Dato1 = (double) matriz1[i][k];
+	                    suma += Dato1 * matrizI[k][j];  
 	                }  
 	                result[i][j] = suma;  
 	            }  
 	        }  
 	        
 	        
-	        for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; j++) {
+	        for (int i = 0; i < result.length; i++) {
+				for (int j = 0; j < result.length; j++) {
 					System.out.print("|" + result[i][j] + "|\t");
 				}
 				System.out.println("\t");
