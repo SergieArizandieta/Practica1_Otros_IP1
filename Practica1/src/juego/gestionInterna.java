@@ -1,9 +1,6 @@
 package juego;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public class gestionInterna {
-
 	
 	public static String espaciado(String dato) {
 		String EspaciadosT[] = null;
@@ -91,7 +88,7 @@ public class gestionInterna {
 		}
 	}
 
-	public static void Buscar() {
+	public static void buscar() {
 		boolean validacion = true;
 
 		if (juego.posicion != 0) {
@@ -129,6 +126,7 @@ public class gestionInterna {
 				if (data[0].equals(Integer.toString(juego.posicion))) {
 					if (cantidad == 2) {
 						juego.tablero[i][j] = data[0] + "," + data[1] + "," + "@";
+						penalizacion();
 					}
 					if (cantidad == 1) {
 						juego.tablero[i][j] = data[0] + "," + "@";
@@ -138,4 +136,16 @@ public class gestionInterna {
 		}
 	}
 	
+	
+	static int ContadorFacil = 0;
+	public static void penalizacion() {
+		
+		if (juego.posicion < 17 && ContadorFacil<=1) {
+			System.out.println("Haz caido en una penalizacion Facil de suerte... ");
+			int noPenalizacion = juego.tlr.nextInt(1, 3 + 1);
+			resolvedor.trigonometria(noPenalizacion);
+		} 
+		
+		
+	}
 }

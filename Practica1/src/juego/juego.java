@@ -93,7 +93,7 @@ public class juego {
 		int dado = tlr.nextInt(2, 6 + 1);
 		System.out.println("Se tiro el dado!! y salio...: " + dado);
 		posicion += dado;
-		gestionInterna.Buscar();
+		gestionInterna.buscar();
 	}
 
 	

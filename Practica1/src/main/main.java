@@ -1,15 +1,25 @@
 package main;
 
 import java.util.Scanner;
+
+import juego.gestionInterna;
 import juego.juego;
+import juego.resolvedor;
 
 public class main {
 	public static Scanner read = new Scanner(System.in);
 
 	public static void main(String[] args) {
 
+		
+		/*while (1<2) {
+			int opcion = 0;
+			opcion = Integer.parseInt(read.nextLine());
+			gestionInterna.penalizacion();
+		}*/
 		//menu();
 		juego.juego();
+		//resolvedor.trigonometria(3);
 	}
 
 	// Muestra menu
@@ -19,7 +29,6 @@ public class main {
 
 		do {
 			try {
-
 				System.out.println("\nBinvenido: Menu\n[1]Iniciar Juego\n[2]Retomar Juego\n[3]Generar reporte\n[4]Salir");
 				opcion = Integer.parseInt(read.nextLine());
 
