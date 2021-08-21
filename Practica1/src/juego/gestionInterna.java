@@ -53,6 +53,9 @@ public class gestionInterna {
 		gestionInterna.ContadorMedio = 0;
 		gestionInterna.ContadorDificl = 0;
 		juego.Revision =true;
+		
+		//reportes
+		reportes.VariblesNoCambian();
 
 		int temporal = 1;
 		juego.tablero[0][0] = "Primero";

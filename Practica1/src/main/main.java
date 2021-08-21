@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import juego.gestionInterna;
 import juego.juego;
+import juego.reportes;
 import juego.resolvedor;
 
 public class main {
@@ -11,13 +12,14 @@ public class main {
 	
 	
 	public static void main(String[] args) {
-		
+		reportes.VariblesNoCambian();
+		reportes.ReporteMostrar();
 		/*
 		 * while (1 < 2) { int opcion = 0; opcion = Integer.parseInt(read.nextLine());
 		 * gestionInterna.penalizacion(); }
 		 */
-
-		 menu();
+		
+		 //menu();
 		// resolvedor.trigonometria(3);
 		//juego.juego();
 
