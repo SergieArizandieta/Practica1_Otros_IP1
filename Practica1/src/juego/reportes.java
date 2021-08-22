@@ -6,7 +6,52 @@ import java.text.DecimalFormat;
 public class reportes {
 
     static DecimalFormat df = new DecimalFormat("###.##");
-	//------------------------------------Reporte-------------------------------------------------	
+ //------------------------------------Reporte 2-------------------------------------------------
+    static String ReporteBitacora = "";
+    public static void bitacora(int tiro){
+    	String reporte ="Se gano con: " + tiro + " tiros\n@\n";
+    	reporte+= gestionInterna.ReporteTemp;
+    	//System.out.println(reporte);
+    	
+    	String[] reporteG = reporte.split("@");
+    	
+		
+		String ReporteTemp = "";
+		
+		ReporteTemp+= ""
+				+"<div class=\"imgs\">\r\n";
+
+		
+		ReporteTemp="<!----tabla 2-->\r\n"
+				+ "<table class=\"steelBlueCols\">\r\n"
+				+ "<thead>\r\n"
+				+ "   <tr> <th>Evento no. </th> <th>Accion</th>  </tr>\r\n"
+				+ "</thead>\r\n"
+				+ "<tbody>\r\n"
+				+ "\r\n"
+				+ "<tr>";
+		
+		for(int i=0;i<reporteG.length;i++) {
+			
+			ReporteTemp += "<td>" + i + "</td>";
+			ReporteTemp += "<td>" + reporteG[i] + "</td>";
+			
+			ReporteTemp += "</tr> \n <tr>";
+			
+		}
+		
+		ReporteTemp += "</tr></tbody></table> <br>";
+				
+
+		
+		
+		ReporteTemp+="</div>";
+		
+		ReporteBitacora +=ReporteTemp;
+		
+    }
+      
+//------------------------------------Reporte 1-------------------------------------------------	
 	 //Varibles Globales para los reportes
 		static String ReporteInicio="",ReporteFinal="";
 		static String ReporteOperaciones="";
@@ -14,7 +59,7 @@ public class reportes {
 		static String ReporteOpMedios="";
 		static String ReporteOpDifil="";
 	
-		//Inicializar las varibles que no cambian
+	//Inicializar las varibles que no cambian
 	public static void VariblesNoCambian() {
 		
 		ReporteInicio = "<!DOCTYPE html>\r\n"
@@ -59,6 +104,10 @@ public class reportes {
 		ReporteOpDifil="<br>\r\n"
 		+ "<div>\r\n"
 		+ "    <h2> Operaciones Dificiles </h2>";
+		
+		ReporteBitacora= "<br>\r\n"
+				+ "<div>\r\n"
+				+ "    <h2> Bitacora </h2>";
 	}
 
 	// Genera la tabla para el reporte
@@ -127,8 +176,7 @@ public class reportes {
 					+ "    <br>";
 			break;
 		}
-		System.out.println("Report");
-		System.out.println(ReporteOpFaciles);
+
 		ReporteOpFaciles += ReporteTemp;
 
 	}
@@ -225,7 +273,7 @@ public class reportes {
 		ReporteTemp+="<!----tabla 2-->\r\n"
 				+ "<table class=\"steelBlueCols\">\r\n"
 				+ "<thead>\r\n"
-				+ "   <tr> <th></th> <th></th> <th></th> <th></th> <th></th> </tr>\r\n"
+				+ "   <tr> <th></th> <th></th> <th></th> <th></th>  </tr>\r\n"
 				+ "</thead>\r\n"
 				+ "<tbody>\r\n"
 				+ "\r\n"
@@ -246,7 +294,7 @@ public class reportes {
 		ReporteTemp+="<!----tabla 2-->\r\n"
 				+ "<table class=\"steelBlueCols\">\r\n"
 				+ "<thead>\r\n"
-				+ "   <tr> <th></th> <th></th> <th></th> <th></th> <th></th> </tr>\r\n"
+				+ "   <tr> <th></th> <th></th> <th></th> <th></th>  </tr>\r\n"
 				+ "</thead>\r\n"
 				+ "<tbody>\r\n"
 				+ "\r\n"
@@ -267,7 +315,7 @@ public class reportes {
 		ReporteTemp+="<!----tabla 2-->\r\n"
 				+ "<table class=\"steelBlueCols\">\r\n"
 				+ "<thead>\r\n"
-				+ "   <tr> <th></th> <th></th> <th></th> <th></th> <th></th> </tr>\r\n"
+				+ "   <tr> <th></th> <th></th> <th></th> <th></th>  </tr>\r\n"
 				+ "</thead>\r\n"
 				+ "<tbody>\r\n"
 				+ "\r\n"
@@ -299,19 +347,16 @@ public class reportes {
 		ReporteOperaciones = ReporteOpFaciles + ReporteOpMedios +ReporteOpDifil;
 	}
 
-	
-	
-
-	
-
-	//Crea el archivo HTML
-		public static void ReporteMostrar() {
+//Crea el archivo HTML
+		public static void ReporteMostrar1() {
 			
-			try {	
+			try {
+				
+
 				ReporteFinalizar();
 				
-				System.out.println("Reporte Creado");
-				FileWriter archivo = new FileWriter("./Reportes/Reporte - copia.html");
+				
+				FileWriter archivo = new FileWriter("./Reportes/Reporte.html");
 				archivo.write(ReporteInicio+ ReporteOperaciones  + ReporteFinal);
 				archivo.close();	
 				
@@ -321,11 +366,22 @@ public class reportes {
 		
 		}
 
+		public static void ReporteMostrar2() {
+			
+			try {
+				
+				bitacora(juego.tiro);
+				
+				FileWriter archivo = new FileWriter("./Reportes/Bitacora.html");
+				archivo.write(ReporteInicio+ ReporteBitacora  + ReporteFinal);
+				archivo.close();	
+				
+			}catch(Exception e) {	
+				System.out.println("ERRO: " + e);
+			}
+		
+		}
 
-		
-		
-		
-		
-	//----------------------------------------------------------------------------------------------	
+//----------------------------------------------------------------------------------------------	
 		
 }

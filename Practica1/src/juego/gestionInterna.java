@@ -1,7 +1,8 @@
 package juego;
 
 public class gestionInterna {
-
+	static String ReporteTemp = "";
+	static int contadoF=0,contadoM=0,contadoD=0;
 	public static String espaciado(String dato) {
 		String EspaciadosT[] = null;
 		String espaciado = "";
@@ -37,9 +38,9 @@ public class gestionInterna {
 	}
 
 	public static void inicializandoGeneral() {
-
+		reportes.VariblesNoCambian();
 		juego.Ganador = false;
-		juego.posicion = 0;
+		juego.posicion = 1;
 		resolvedor.Facil1 = true;
 		resolvedor.Facil2 = true;
 		resolvedor.Facil3 = true;
@@ -53,6 +54,7 @@ public class gestionInterna {
 		gestionInterna.ContadorMedio = 0;
 		gestionInterna.ContadorDificl = 0;
 		juego.Revision =true;
+		juego.tiro = 0;
 		
 		//reportes
 		reportes.VariblesNoCambian();
@@ -80,10 +82,13 @@ public class gestionInterna {
 				alternante = 2;
 			}
 		}
+		
+		
 	}
 
 	public static void inicializandoPenalizaciones() {
-
+		int a=2;
+		int position = 0;
 		boolean verificar = true;
 
 		for (int i = 0; i < 8; i++) {
@@ -92,14 +97,21 @@ public class gestionInterna {
 			for (int j = 0; j < noPenalizacion; j++) {
 				verificar = true;
 				while (verificar == true) {
+					if( i==7) {
+						int Posicion = juego.tlr.nextInt(0, 6 + 1);
+						position= Posicion;
+						a=3;
+					}else {
+						int Posicion = juego.tlr.nextInt(0, 7 + 1);
+						position= Posicion;
+					}
+					
 
-					int Posicion = juego.tlr.nextInt(0, 7 + 1);
-
-					String[] data = juego.tablero[i][Posicion].split(",");
+					String[] data = juego.tablero[i][position].split(",");
 					int cantidad = data.length;
 					if (cantidad != 2) {
 
-						juego.tablero[i][Posicion] = data[0] + "," + "#";
+						juego.tablero[i][position] = data[0] + "," + "#";
 						verificar = false;
 
 					}
@@ -108,7 +120,8 @@ public class gestionInterna {
 		}
 	}
 
-	public static void buscar() {
+	public static void buscar(int dado) {
+		String tipo="";
 		boolean validacion = true;
 
 		if (juego.posicion != 0) {
@@ -118,7 +131,8 @@ public class gestionInterna {
 						String[] dataEliminar = juego.tablero[k][l].split(",");
 						int cantidadEliminar = dataEliminar.length;
 
-						if (cantidadEliminar == 2) {
+						if (cantidadEliminar == 2) {					
+							
 							if (dataEliminar[1].equals("@")) {
 								juego.tablero[k][l] = dataEliminar[0];
 								validacion = false;
@@ -127,6 +141,7 @@ public class gestionInterna {
 
 						if (cantidadEliminar == 3) {
 							if (dataEliminar[2].equals("@")) {
+								
 								juego.tablero[k][l] = dataEliminar[0] + "," + dataEliminar[1];
 								validacion = false;
 							}
@@ -145,10 +160,38 @@ public class gestionInterna {
 
 				if (data[0].equals(Integer.toString(juego.posicion))) {
 					if (cantidad == 2) {
+						if(juego.posicion<17) {
+							contadoF++;
+							tipo = "facil";
+							if(contadoF<3) {
+								ReporteTemp += "@\nCasilla actual: "+  (juego.posicion-dado)  +"\n<br>Se tiraro dado: " + dado + "\n<br>Se realizo penalizacion: " + tipo +"\n";
+							}else {
+								ReporteTemp += "@\nCasilla actual: "+  (juego.posicion-dado)  +"\n<br>Se tiraro dado: " + dado +"\n";
+							}
+							
+						}else if(juego.posicion > 16 && juego.posicion < 41) {
+							contadoM++;
+							tipo = "Intermedio";
+							if(contadoM<3) {
+								ReporteTemp += "@\nCasilla actual: "+  (juego.posicion-dado)  +"\n<br>Se tiraro dado: " + dado + "\n<br>Se realizo penalizacion: " + tipo +"\n";
+							}else {
+								ReporteTemp += "@\nCasilla actual: "+  (juego.posicion-dado)  +"\n<br>Se tiraro dado: " + dado +"\n";
+							}
+						}else if(juego.posicion > 40) {
+							contadoD++;
+							tipo = "Dificil";
+							if(contadoD<3) {
+								ReporteTemp += "@\nCasilla actual: "+  (juego.posicion-dado)  +"\n<br>Se tiraro dado: " + dado + "\n<br>Se realizo penalizacion: " + tipo +"\n";
+							}else {
+								ReporteTemp += "@\nCasilla actual: "+  (juego.posicion-dado)  +"\n<br>Se tiraro dado: " + dado +"\n";
+							}
+						}
+
 						juego.tablero[i][j] = data[0] + "," + data[1] + "," + "@";
 						penalizacion();
 					}
 					if (cantidad == 1) {
+						ReporteTemp += "@\nCasilla actual: "+  (juego.posicion-dado)  +"\n<br>Se tiraro dado: " + dado +"\n";
 						juego.tablero[i][j] = data[0] + "," + "@";
 					}
 				}

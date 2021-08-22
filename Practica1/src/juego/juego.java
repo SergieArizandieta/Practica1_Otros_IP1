@@ -12,40 +12,34 @@ public class juego {
 
 	static boolean Ganador = false;
 	static String[][] tablero = new String[8][8];
-	public static int posicion = 0;
+	public static int posicion = 1;
+	
+	public static int tiro = 0;
 
 	public static void juego() {
-		System.out.println("Bienvenido a Escaleras Matemáticas");
+		System.out.println("Bienvenido a Escaleras Matemticas");
 		gestionInterna.inicializandoGeneral();
 		gestionInterna.inicializandoPenalizaciones();
-		//Looktablero();
-
+		
+		gestionInterna.ReporteTemp += "Se inicio el juego de <br>ESCALERAS MATEMATICAS\n";
 		tablero();
 
 	}
 
 	public static void tablero() {
 		if(Ganador == true) {
-			
 			System.out.println("Haz Ganado!!\n");
-			
 		}else {
-		mostrar_tablero();
+		mostrar_tablero(posicion);
 		if(posicion >=  64) {
+			gestionInterna.ReporteTemp += "\n@Casilla actual: "+  (64)  +"\nHAZ GANADO!!";
+			System.out.println("TABLERO DE EJECUCION\n");
+			Looktablero();
 			Ganador = true;
 			tablero();
 		}else {
 			menu();
 		}
-		}
-	}
-
-	public static void Looktablero() {
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
-				System.out.print("|" + tablero[i][j] + "|\t");
-			}
-			System.out.println("\t");
 		}
 	}
 
@@ -60,17 +54,15 @@ public class juego {
 				opcion = read.nextLine().toLowerCase();
 
 				switch (opcion) {
-				// Iniciar Juego
+	
 				case "x":
-					System.out.println("adsasdas");
+					tiro++;
 					tirar_dados();
 					check = false;
 					tablero();
 					break;
-				// Retomar juego
-				case "p":
 				
-					System.out.println("aaaa");
+				case "p":
 					check = false;
 					main.menu();
 					break;
@@ -83,7 +75,7 @@ public class juego {
 		} while (check == true);
 	}
 
-	public static void mostrar_tablero() {
+	public static void mostrar_tablero(int posicion) {
 		String TempDato[] = null;
 		String TempEspacio = "";
 		System.out.println("\nTablero");
@@ -96,12 +88,17 @@ public class juego {
 			}
 			System.out.println("");
 			for (int j = 0; j < 8; j++) {
-				System.out.print("|\t" + gestionInterna.espaciado(tablero[i][j]) + "|");
+				if (posicion==1 && i==7 && j==7) {
+					System.out.print("|\t" + " "+ "@|");
+				}else {
+					System.out.print("|\t" + gestionInterna.espaciado(tablero[i][j]) + "|");
+				}
+				
 			}
 			System.out.println("\t");
 		}
 		System.out.println("--------------------------------------------------------------------");
-
+		
 	}
 
 	public static void tirar_dados() {
@@ -112,7 +109,15 @@ public class juego {
 		if (posicion>=64) {
 			posicion=64;
 		}
-		gestionInterna.buscar();
+		gestionInterna.buscar(dado);
 	}
 
+	public static void Looktablero() {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				System.out.print("|" + tablero[i][j] + "|\t");
+			}
+			System.out.println("\t");
+		}
+	}
 }

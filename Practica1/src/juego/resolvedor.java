@@ -1,5 +1,7 @@
 package juego;
 
+import java.text.DecimalFormat;
+
 public class resolvedor {
 	static boolean Facil1 = true, Facil2 = true, Facil3 = true;
 	static boolean Medio1 = true, Medio2 = true, Medio3 = true;
@@ -24,7 +26,12 @@ public class resolvedor {
 				b = Math.pow((a * a + c * c - 2 * a * c * Math.cos(Math.toRadians(B))), 0.5);
 				C = Math.toDegrees(Math.asin((Math.sin(Math.toRadians(B)) * a) / b));
 				A = 180 - B - C;
-				System.out.println("uno - F");
+				System.out.println("\nOperacion realizada con exito ");
+				System.out.println("Datos solicitados ");
+				System.out.println("lado b= " + df.format(b));
+				System.out.println("Angulo C= " + df.format(C) + " DEG" );
+				System.out.println("Angulo A= " + df.format(A) + " DEG" );
+				
 				gestionInterna.ContadorFacil += 1;
 				reportes.ReportePenalizacionFacil(1);
 				Facil1 = false;
@@ -44,7 +51,13 @@ public class resolvedor {
 				a = Math.pow((b * b + c * c - 2 * b * c * Math.cos(Math.toRadians(A))), 0.5);
 				C = Math.toDegrees(Math.asin((Math.sin(Math.toRadians(A)) * b) / a));
 				B = 180 - C - A;
-				System.out.println("dos - F");
+				System.out.println("\nOperacion realizada con exito ");
+				System.out.println("Datos solicitados ");
+				System.out.println("lado a= " + df.format(a));
+				System.out.println("Angulo C= " + df.format(C) + " DEG" );
+				System.out.println("Angulo B= " + df.format(B) + " DEG" );
+				
+				
 				gestionInterna.ContadorFacil += 1;
 				reportes.ReportePenalizacionFacil(2);
 				Facil2 = false;
@@ -64,7 +77,13 @@ public class resolvedor {
 				c = Math.pow((b * b + a * a - 2 * b * a * Math.cos(Math.toRadians(C))), 0.5);
 				B = Math.toDegrees(Math.asin((Math.sin(Math.toRadians(C)) * a) / c));
 				A = 180 - C - B;
-				System.out.println("tres - F");
+				
+				System.out.println("\nOperacion realizada con exito ");
+				System.out.println("Datos solicitados ");
+				System.out.println("lado c= " + df.format(c));
+				System.out.println("Angulo B= " + df.format(B) + " DEG" );
+				System.out.println("Angulo A= " + df.format(A) + " DEG" );
+				
 				gestionInterna.ContadorFacil += 1;
 				reportes.ReportePenalizacionFacil(3);
 				Facil3 = false;
@@ -87,7 +106,7 @@ public class resolvedor {
 				int MatrizB[][] = { { 9, 5, 2, 1, 8 }, { 4, 2, 3, 47, 8 }, { 48, 55, 32, 19, 6 }, { 7, 56, 32, 14, 8 },
 						{ 32, 87, 0, 1, 7 } };
 
-				System.out.println("uno - M");
+
 				gestionInterna.ContadorMedio += 1;
 				Medio1 = false;
 
@@ -105,7 +124,7 @@ public class resolvedor {
 				int MatrizB[][] = { { 0, 2, 15, 1, 66 }, { 21, 48, 62, 7, 33 }, { 4, 88, 0, 68, 4 },
 						{ 25, 18, 24, 7, 55 }, { 24, 15, 36, 5, 98 } };
 
-				System.out.println("dos - M");
+
 				gestionInterna.ContadorMedio += 1;
 				Medio2 = false;
 
@@ -122,7 +141,7 @@ public class resolvedor {
 				int MatrizB[][] = { { 78, 25, 66, 48, 98 }, { 0, 45, 2, 3, 1 }, { 2, 9, 14, 10, 20 },
 						{ 35, 87, 65, 2, 32 }, { 25, 8, 4, 9, 39 } };
 
-				System.out.println("tres - M");
+
 				gestionInterna.ContadorMedio += 1;
 				Medio3 = false;
 
@@ -139,6 +158,8 @@ public class resolvedor {
 				matriz_t[i][j] = MatrizA[i][j] + MatrizB[i][j];
 			}
 		}
+		System.out.println("\nOperacion realizada con exito ");
+		System.out.println("Suma Reultante A+B: ");
 
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
@@ -164,7 +185,7 @@ public class resolvedor {
 
 				adjunta(MatrizB, determinante(MatrizB, 4), MatrizA,1);
 				
-				System.out.println("uno - D");
+
 				gestionInterna.ContadorDificl += 1;
 				Dificil1 = false;
 
@@ -180,7 +201,7 @@ public class resolvedor {
 				int MatrizB[][] = { { 8, 19, 20, 4 }, { 12, 33, 6, 8 }, { 4, 5, 9, 7 }, { 8, 22, 14, 6 } };
 
 				adjunta(MatrizB, determinante(MatrizB, 4), MatrizA,2);
-				System.out.println("dos - D");
+
 				gestionInterna.ContadorDificl += 1;
 				Dificil2 = false;
 
@@ -195,7 +216,7 @@ public class resolvedor {
 				int MatrizB[][] = { { 0, 9, 7, 19 }, { 2, 30, 5, 48 }, { 1, 31, 2, 5 }, { 15, 8, 4, 3 } };
 
 				adjunta(MatrizB, determinante(MatrizB, 4), MatrizA,3);
-				System.out.println("tres - D");
+
 				gestionInterna.ContadorDificl += 1;
 				Dificil3 = false;
 
@@ -326,6 +347,7 @@ public class resolvedor {
 		producto(matrizA, MatrizI,matrizB,opcion);
 	}
 
+	static DecimalFormat df = new DecimalFormat("###.##");
 	private static void producto(int[][] matriz1, double matrizI[][],int[][]matriz2,int opcion) {
 		double suma = 0;
 		double result[][] = new double[matriz1.length][matrizI.length];
@@ -339,10 +361,13 @@ public class resolvedor {
 				result[i][j] = suma;
 			}
 		}
+		
+		System.out.println("\nOperacion realizada con exito ");
+		System.out.println("Division Resultante A*B^-1:\n");
 
 		for (int i = 0; i < result.length; i++) {
 			for (int j = 0; j < result.length; j++) {
-				System.out.print("|" + result[i][j] + "|\t");
+				System.out.print("|" + df.format(result[i][j]) + "|\t");
 			}
 			System.out.println("\t");
 		}

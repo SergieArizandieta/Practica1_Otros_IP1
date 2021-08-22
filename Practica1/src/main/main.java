@@ -13,7 +13,7 @@ public class main {
 	
 	public static void main(String[] args) {
 	
-	reportes.VariblesNoCambian();
+	
 	menu();
 	/*int opcion = 0;
 	while (opcion < 2) {
@@ -62,7 +62,8 @@ public class main {
 					}else {
 						if (juego.Revision == true) {
 							System.out.println("Reportes Creados");
-							reportes.ReporteMostrar();
+							reportes.ReporteMostrar1();
+							reportes.ReporteMostrar2();
 							juego.Revision = false;
 						}else{
 							System.out.println("Ya han sido creados");
