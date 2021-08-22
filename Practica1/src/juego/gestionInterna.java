@@ -161,9 +161,8 @@ public class gestionInterna {
 	static int ContadorDificl = 0;
 
 	public static void penalizacion() {
-
+		
 		if (juego.posicion < 17 && ContadorFacil <= 1) {
-			System.out.println("Haz caido en una penalizacion Facil de suerte... ");
 			int noPenalizacion = juego.tlr.nextInt(1, 3 + 1);
 			resolvedor.trigonometria(noPenalizacion);
 		}

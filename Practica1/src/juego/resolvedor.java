@@ -16,6 +16,7 @@ public class resolvedor {
 			if (Facil1 == false) {
 				gestionInterna.penalizacion();
 			} else {
+				System.out.println("Haz caido en una penalizacion Facil de suerte... ");
 				a = 15;
 				c = 20;
 				B = 25;
@@ -25,6 +26,7 @@ public class resolvedor {
 				A = 180 - B - C;
 				System.out.println("uno - F");
 				gestionInterna.ContadorFacil += 1;
+				reportes.ReportePenalizacionFacil(1);
 				Facil1 = false;
 			}
 
@@ -34,6 +36,7 @@ public class resolvedor {
 			if (Facil2 == false) {
 				gestionInterna.penalizacion();
 			} else {
+				System.out.println("Haz caido en una penalizacion Facil de suerte... ");
 				b = 10;
 				c = 25;
 				A = 30;
@@ -43,14 +46,17 @@ public class resolvedor {
 				B = 180 - C - A;
 				System.out.println("dos - F");
 				gestionInterna.ContadorFacil += 1;
+				reportes.ReportePenalizacionFacil(2);
 				Facil2 = false;
 			}
 			break;
 
 		case 3:
 			if (Facil3 == false) {
+				
 				gestionInterna.penalizacion();
 			} else {
+				System.out.println("Haz caido en una penalizacion Facil de suerte... ");
 				a = 18;
 				b = 25;
 				C = 30;
@@ -60,6 +66,7 @@ public class resolvedor {
 				A = 180 - C - B;
 				System.out.println("tres - F");
 				gestionInterna.ContadorFacil += 1;
+				reportes.ReportePenalizacionFacil(3);
 				Facil3 = false;
 			}
 			break;
@@ -84,7 +91,7 @@ public class resolvedor {
 				gestionInterna.ContadorMedio += 1;
 				Medio1 = false;
 
-				sumarMatrices(MatrizA, MatrizB);
+				sumarMatrices(MatrizA, MatrizB,1);
 			}
 
 			break;
@@ -102,7 +109,7 @@ public class resolvedor {
 				gestionInterna.ContadorMedio += 1;
 				Medio2 = false;
 
-				sumarMatrices(MatrizA, MatrizB);
+				sumarMatrices(MatrizA, MatrizB,2);
 			}
 			break;
 
@@ -119,13 +126,13 @@ public class resolvedor {
 				gestionInterna.ContadorMedio += 1;
 				Medio3 = false;
 
-				sumarMatrices(MatrizA, MatrizB);
+				sumarMatrices(MatrizA, MatrizB,3);
 			}
 			break;
 		}
 	}
 
-	public static void sumarMatrices(int[][] MatrizA, int[][] MatrizB) {
+	public static void sumarMatrices(int[][] MatrizA, int[][] MatrizB, int opcion) {
 		int[][] matriz_t = new int[5][5];
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
@@ -139,6 +146,9 @@ public class resolvedor {
 			}
 			System.out.println("\t");
 		}
+		
+		reportes.ReportePenalizacionMedia(matriz_t,MatrizA,MatrizB,opcion);
+		
 	}
 
 	public static void matricesDificl(int opcion) {
@@ -152,7 +162,8 @@ public class resolvedor {
 				int MatrizA[][] = { { 5, 10, 1, 3 }, { 9, 14, 2, 6 }, { 7, 8, 15, 3 }, { 6, 8, 9, 2 } };
 				int MatrizB[][] = { { 5, 13, 9, 4 }, { 1, 9, 6, 3 }, { 8, 11, 69, 33 }, { 25, 6, 7, 4 } };
 
-				adjunta(MatrizB, determinante(MatrizB, 4), MatrizA);
+				adjunta(MatrizB, determinante(MatrizB, 4), MatrizA,1);
+				
 				System.out.println("uno - D");
 				gestionInterna.ContadorDificl += 1;
 				Dificil1 = false;
@@ -168,7 +179,7 @@ public class resolvedor {
 				int MatrizA[][] = { { 1, 12, 9, 8 }, { 7, 6, 3, 2 }, { 0, 5, 6, 14 }, { 6, 9, 6, 10 } };
 				int MatrizB[][] = { { 8, 19, 20, 4 }, { 12, 33, 6, 8 }, { 4, 5, 9, 7 }, { 8, 22, 14, 6 } };
 
-				adjunta(MatrizB, determinante(MatrizB, 4), MatrizA);
+				adjunta(MatrizB, determinante(MatrizB, 4), MatrizA,2);
 				System.out.println("dos - D");
 				gestionInterna.ContadorDificl += 1;
 				Dificil2 = false;
@@ -183,7 +194,7 @@ public class resolvedor {
 				int MatrizA[][] = { { 5, 9, 14, 5 }, { 6, 0, 5, 3 }, { 1, 14, 68, 8 }, { 7, 5, 3, 9 } };
 				int MatrizB[][] = { { 0, 9, 7, 19 }, { 2, 30, 5, 48 }, { 1, 31, 2, 5 }, { 15, 8, 4, 3 } };
 
-				adjunta(MatrizB, determinante(MatrizB, 4), MatrizA);
+				adjunta(MatrizB, determinante(MatrizB, 4), MatrizA,3);
 				System.out.println("tres - D");
 				gestionInterna.ContadorDificl += 1;
 				Dificil3 = false;
@@ -227,7 +238,7 @@ public class resolvedor {
 		return Determinante;
 	}
 
-	public static void adjunta(int[][] Matriz, int det, int[][] matrizA) {
+	public static void adjunta(int[][] Matriz, int det, int[][] matrizA,int opcion) {
 		int MatrizA[][] = new int[4][4];
 		int Temp[][] = new int[3][3];
 
@@ -288,10 +299,10 @@ public class resolvedor {
 		 * System.out.println("\t");
 		 */
 
-		inversa(MatrizA, det, matrizA);
+		inversa(MatrizA, det, matrizA,Matriz,opcion);
 	}
 
-	public static void inversa(int[][] Matriz, int det, int[][] matrizA) {
+	public static void inversa(int[][] Matriz, int det, int[][] matrizA,int[][]matrizB,int opcion) {
 
 		double MatrizI[][] = new double[4][4];
 
@@ -312,10 +323,10 @@ public class resolvedor {
 		 * System.out.println("\t"); } System.out.println("\t");
 		 */
 
-		producto(matrizA, MatrizI);
+		producto(matrizA, MatrizI,matrizB,opcion);
 	}
 
-	private static double[][] producto(int[][] matriz1, double matrizI[][]) {
+	private static void producto(int[][] matriz1, double matrizI[][],int[][]matriz2,int opcion) {
 		double suma = 0;
 		double result[][] = new double[matriz1.length][matrizI.length];
 		for (int i = 0; i < matriz1.length; i++) {
@@ -336,7 +347,7 @@ public class resolvedor {
 			System.out.println("\t");
 		}
 
-		return result;
+		reportes.ReportePenalizacionDificl(result,matriz1,matriz2,opcion);
 
 	}
 

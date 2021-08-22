@@ -12,20 +12,30 @@ public class main {
 	
 	
 	public static void main(String[] args) {
-		reportes.VariblesNoCambian();
-		reportes.ReporteMostrar();
-		/*
-		 * while (1 < 2) { int opcion = 0; opcion = Integer.parseInt(read.nextLine());
-		 * gestionInterna.penalizacion(); }
-		 */
+	
+	reportes.VariblesNoCambian();
+	menu();
+	/*int opcion = 0;
+	while (opcion < 2) {
 		
-		 //menu();
+			
+			opcion = Integer.parseInt(read.nextLine());
+			gestionInterna.penalizacion();
+			
+		}
+
+		
+		reportes.ReporteMostrar();
+		
+	
+		// menu();
 		// resolvedor.trigonometria(3);
 		//juego.juego();
 
-	}
+	}*/
 
 	// Muestra menu
+	}
 	public static void menu() {
 		int opcion = 0;
 		boolean check = true;
@@ -48,9 +58,11 @@ public class main {
 				case 3:
 					if(juego.posicion<64) {
 						System.out.println("Debes terminar la partida en curso");
+						
 					}else {
 						if (juego.Revision == true) {
 							System.out.println("Reportes Creados");
+							reportes.ReporteMostrar();
 							juego.Revision = false;
 						}else{
 							System.out.println("Ya han sido creados");

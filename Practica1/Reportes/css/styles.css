@@ -1,5 +1,5 @@
 body{
-background-image: url(https://fondosmil.com/fondo/17543.jpg);
+background-image: url(https://i.pinimg.com/474x/14/9f/c6/149fc6a2880b3975c3b5ae3d38c5537a.jpg);
 background-attachment:fixed;
 background-repeat:no-repeat;
 background-size:cover;
@@ -62,8 +62,10 @@ table.steelBlueCols tfoot .links a{
 
 .titulos{
 color: white;
-background:black;
-width:40%;} 
+background:rgb(32, 82, 90);
+width:40%;
+border-radius: 5%;
+} 
 
 .SUBtitulos{
 color: black;
@@ -95,9 +97,12 @@ font-weight: none;
  font-size:50px;
 }
 
+.imgs{
+  background-color: white;
+}
 
 div{
-
+  margin: 40px;
   background-color: #70c0b3;
   
   
