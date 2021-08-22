@@ -53,6 +53,10 @@ public class gestionInterna {
 		gestionInterna.ContadorFacil = 0;
 		gestionInterna.ContadorMedio = 0;
 		gestionInterna.ContadorDificl = 0;
+		gestionInterna.ReporteTemp = "";
+		gestionInterna.contadoF=0;
+		gestionInterna.contadoM=0;
+		gestionInterna.contadoD=0;
 		juego.Revision =true;
 		juego.tiro = 0;
 		
@@ -171,7 +175,7 @@ public class gestionInterna {
 							
 						}else if(juego.posicion > 16 && juego.posicion < 41) {
 							contadoM++;
-							tipo = "Intermedio";
+							tipo = "Medio";
 							if(contadoM<3) {
 								ReporteTemp += "@\nCasilla actual: "+  (juego.posicion-dado)  +"\n<br>Se tiraro dado: " + dado + "\n<br>Se realizo penalizacion: " + tipo +"\n";
 							}else {
